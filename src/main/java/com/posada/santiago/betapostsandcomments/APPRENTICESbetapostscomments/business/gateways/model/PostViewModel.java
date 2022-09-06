@@ -43,6 +43,10 @@ public class PostViewModel {
         return favorite;
     }
 
+    public void setComments(List<CommentViewModel> comments) {
+        this.comments = comments;
+    }
+
     public List<CommentViewModel> getComments() {
         return comments;
     }
