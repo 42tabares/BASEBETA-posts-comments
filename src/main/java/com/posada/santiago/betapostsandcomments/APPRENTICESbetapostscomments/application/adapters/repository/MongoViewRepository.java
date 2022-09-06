@@ -52,13 +52,4 @@ public class MongoViewRepository implements DomainViewRepository {
         return null;
     }
 
-    @Override
-    public Mono<PostViewModel> savePost(PostViewModel postViewModel) {
-        return null;
-    }
-
-    @Override
-    public Mono<PostViewModel> addComment(CommentViewModel commentViewModel) {
-        return null;
-    }
 }
