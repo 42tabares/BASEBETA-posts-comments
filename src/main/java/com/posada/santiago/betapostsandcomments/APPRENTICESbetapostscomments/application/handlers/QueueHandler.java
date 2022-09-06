@@ -1,7 +1,5 @@
 package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.handlers;
 
-
-
 import com.google.gson.Gson;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.usecases.UpdateViewUseCase;
 import org.springframework.stereotype.Service;

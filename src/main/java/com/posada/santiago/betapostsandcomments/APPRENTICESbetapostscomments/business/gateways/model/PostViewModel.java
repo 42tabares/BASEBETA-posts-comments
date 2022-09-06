@@ -1,4 +1,4 @@
-package com.posada.santiago.betapostsandcomments.business.gateways.model;
+package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,19 +6,20 @@ import java.util.List;
 public class PostViewModel {
 
     private String id;
-    private String aggregateId;
+    private String postId;
     private String author;
     private String title;
-    private List<CommentViewModel> comments;
+    private String favorite;
+    private List <CommentViewModel> comments;
 
     public PostViewModel() {
-        this.comments = new ArrayList<>();
     }
 
-    public PostViewModel(String aggregateId, String author, String title, List<CommentViewModel> comments) {
-        this.aggregateId = aggregateId;
+    public PostViewModel(String postId, String author, String title, String favorite, List<CommentViewModel> comments) {
+        this.postId = postId;
         this.author = author;
         this.title = title;
+        this.favorite = favorite;
         this.comments = comments;
     }
 
@@ -26,39 +27,23 @@ public class PostViewModel {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAggregateId() {
-        return aggregateId;
-    }
-
-    public void setAggregateId(String aggregateId) {
-        this.aggregateId = aggregateId;
+    public String getPostId() {
+        return postId;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getFavorite() {
+        return favorite;
     }
 
     public List<CommentViewModel> getComments() {
         return comments;
-    }
-
-    public void setComments(List<CommentViewModel> comments) {
-        this.comments = comments;
     }
 }

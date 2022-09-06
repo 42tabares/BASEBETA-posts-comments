@@ -2,7 +2,8 @@ package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.bu
 
 
 
-import com.posada.santiago.betapostsandcomments.business.gateways.model.PostViewModel;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.CommentViewModel;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
