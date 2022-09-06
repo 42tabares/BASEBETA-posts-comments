@@ -10,4 +10,7 @@ public interface DomainViewRepository {
     Flux<PostViewModel> findAllPosts();
     Mono<PostViewModel> saveNewPost(PostViewModel post);
     Mono<PostViewModel> addCommentToPost(CommentViewModel comment);
+    Mono<PostViewModel> savePost(PostViewModel postViewModel);
+    Mono<PostViewModel> addComment(CommentViewModel commentViewModel);
+
 }
