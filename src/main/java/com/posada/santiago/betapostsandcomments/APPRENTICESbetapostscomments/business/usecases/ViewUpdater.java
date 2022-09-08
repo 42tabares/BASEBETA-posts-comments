@@ -38,9 +38,6 @@ public class ViewUpdater extends DomainUpdater {
 
         listen((CommentAdded event)->{
 
-            //AGGREGATEROOT IS PRESENT
-            //System.out.println(event.aggregateRootId());
-
             CommentViewModel comment = new CommentViewModel(
                     event.getId() ,
                     event.aggregateRootId(),

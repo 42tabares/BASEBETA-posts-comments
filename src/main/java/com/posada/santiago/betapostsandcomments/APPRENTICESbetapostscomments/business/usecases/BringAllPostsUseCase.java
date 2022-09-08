@@ -1,31 +1,23 @@
 package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.usecases;
 
 
-import co.com.sofka.domain.generic.DomainEvent;
-import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.DomainViewRepository;
-import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.EventBus;
-import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.generic.DomainUpdater;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.adapters.repository.MongoViewRepository;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import java.util.function.Supplier;
 
 @Service
-public class BringAllPostsUseCase {
-/*
-    private final DomainViewRepository repository;
-    private final EventBus bus;
+public class BringAllPostsUseCase implements Supplier<Flux<PostViewModel>> {
+    public final MongoViewRepository repository;
 
-    public BringAllPostsUseCase(DomainViewRepository repository, EventBus bus) {
+    public BringAllPostsUseCase(MongoViewRepository repository) {
         this.repository = repository;
-        this.bus = bus;
     }
 
     @Override
-    public
-
-
-
-    //Finish the implementation of this class using the functional interfaces
-
- */
+    public Flux<PostViewModel> get() {
+        return this.repository.findAllPosts();
+    }
 }
