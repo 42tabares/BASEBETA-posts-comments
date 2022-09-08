@@ -18,6 +18,26 @@ public class CommentViewModel {
         this.favorite = favorite;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
+    }
+
     public String getId() {
         return id;
     }

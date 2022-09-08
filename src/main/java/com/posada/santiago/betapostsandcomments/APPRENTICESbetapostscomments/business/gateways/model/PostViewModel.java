@@ -1,12 +1,10 @@
 package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PostViewModel {
 
-    private String id;
-    private String postId;
+    private String aggregateId;
     private String author;
     private String title;
     private String favorite;
@@ -15,20 +13,16 @@ public class PostViewModel {
     public PostViewModel() {
     }
 
-    public PostViewModel(String postId, String author, String title, String favorite, List<CommentViewModel> comments) {
-        this.postId = postId;
+    public PostViewModel(String AggregateId, String author, String title, String favorite, List<CommentViewModel> comments) {
+        this.aggregateId = AggregateId;
         this.author = author;
         this.title = title;
         this.favorite = favorite;
         this.comments = comments;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getPostId() {
-        return postId;
+    public String getAggregateId() {
+        return aggregateId;
     }
 
     public String getAuthor() {
@@ -41,6 +35,22 @@ public class PostViewModel {
 
     public String getFavorite() {
         return favorite;
+    }
+
+    public void setAggregateId(String aggregateId) {
+        this.aggregateId = aggregateId;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
     }
 
     public void setComments(List<CommentViewModel> comments) {

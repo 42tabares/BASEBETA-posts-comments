@@ -20,7 +20,7 @@ public class QueueHandler implements Consumer<String> {
 
     @Override
     public void accept(String received) {
-//        DomainEvent event = gson.fromJson(gson.fromJson(received, StoredEvent.class).getEventBody(),DomainEvent.class);
+
         Notification notification = gson.fromJson(received, Notification.class);
 
         DomainEvent event = null;
@@ -32,6 +32,5 @@ public class QueueHandler implements Consumer<String> {
             throw new RuntimeException(e);
         }
         useCase.accept(event);
-        //Finish the implementation of this Method
     }
 }

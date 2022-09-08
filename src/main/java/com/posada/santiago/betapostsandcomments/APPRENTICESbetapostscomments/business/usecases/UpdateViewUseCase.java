@@ -19,7 +19,6 @@ public class UpdateViewUseCase implements Consumer<DomainEvent> {
 
     @Override
     public void accept(DomainEvent domainEvent){
-        //bus.publish(domainEvent);
         updater.applyEvent(domainEvent);
     }
 }

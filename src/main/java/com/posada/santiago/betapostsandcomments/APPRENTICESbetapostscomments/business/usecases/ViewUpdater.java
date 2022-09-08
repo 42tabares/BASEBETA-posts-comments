@@ -1,8 +1,8 @@
 package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.usecases;
 
 
-import co.com.sofka.domain.generic.DomainEvent;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.DomainViewRepository;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.EventBus;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.CommentViewModel;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.generic.DomainUpdater;
@@ -16,19 +16,41 @@ import java.util.ArrayList;
 public class ViewUpdater extends DomainUpdater {
 
     private final DomainViewRepository repository;
+    private final EventBus bus;
 
 
-    public ViewUpdater(DomainViewRepository repository){
+    public ViewUpdater(DomainViewRepository repository, EventBus bus){
         this.repository = repository;
+        this.bus = bus;
 
         listen((PostCreated event)->{
-            PostViewModel post = new PostViewModel(event.aggregateRootId(), event.getAuthor(), event.getTitle(), "false", new ArrayList<>());
-            repository.saveNewPost(post).subscribe();
+
+            //System.out.println(event.aggregateRootId());
+
+            PostViewModel post = new PostViewModel(
+                    event.aggregateRootId(),
+                    event.getAuthor(),
+                    event.getTitle(),
+                    "false",
+                    new ArrayList<>());
+
+            this.bus.publishPostViewModel(post);
+            this.repository.saveNewPost(post).subscribe();
         });
 
         listen((CommentAdded event)->{
-            CommentViewModel comment = new CommentViewModel(event.getId() , event.aggregateRootId(), event.getAuthor(), event.getContent(), "false");
-            repository.addCommentToPost(comment).subscribe();
+
+            //AGGREGATEROOT IS PRESENT
+            //System.out.println(event.aggregateRootId());
+
+            CommentViewModel comment = new CommentViewModel(
+                    event.getId() ,
+                    event.aggregateRootId(),
+                    event.getAuthor(),
+                    event.getContent(),
+                    "false");
+            this.bus.publishCommentViewModel(comment);
+            this.repository.addCommentToPost(comment).subscribe();
         });
     }
 }

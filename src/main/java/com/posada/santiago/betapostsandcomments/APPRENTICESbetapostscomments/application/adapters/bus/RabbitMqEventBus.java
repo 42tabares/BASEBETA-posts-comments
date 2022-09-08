@@ -3,9 +3,14 @@ package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.ap
 
 import co.com.sofka.domain.generic.DomainEvent;
 import com.google.gson.Gson;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.config.RabbitMqConfig;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.EventBus;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.CommentViewModel;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
+
+import java.lang.reflect.Type;
 
 @Service
 public class RabbitMqEventBus implements EventBus {
@@ -24,7 +29,18 @@ public class RabbitMqEventBus implements EventBus {
         );
         //Find a way to send this notification through the predefined queues in the rabbitMq configuration,
         //To that specific exchange and queues bases on the type of event
+    }
 
+    @Override
+    public void publishPostViewModel(PostViewModel viewModel) {
+        rabbitTemplate.convertAndSend(
+                RabbitMqConfig.EXCHANGE,RabbitMqConfig.PROXY_ROUTING_KEY_POST_CREATED,gson.toJson(viewModel).getBytes());
+    }
+
+    @Override
+    public void publishCommentViewModel(CommentViewModel viewModel) {
+        rabbitTemplate.convertAndSend(
+                RabbitMqConfig.EXCHANGE,RabbitMqConfig.PROXY_ROUTING_KEY_COMMENT_ADDED,gson.toJson(viewModel).getBytes());
     }
 
     @Override

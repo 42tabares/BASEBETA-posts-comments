@@ -53,7 +53,6 @@ public class RabbitMqConfig {
 
     @RabbitListener(queues = GENERAL_QUEUE)
     public void listenToGeneralQueue(String received){
-        /**Starting point*/
         handler.accept(received);
     }
 
