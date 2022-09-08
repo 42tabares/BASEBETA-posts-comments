@@ -25,8 +25,6 @@ public class ViewUpdater extends DomainUpdater {
 
         listen((PostCreated event)->{
 
-            //System.out.println(event.aggregateRootId());
-
             PostViewModel post = new PostViewModel(
                     event.aggregateRootId(),
                     event.getAuthor(),
