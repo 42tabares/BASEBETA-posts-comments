@@ -57,8 +57,7 @@ public class MongoViewRepository implements DomainViewRepository {
             var comments = new ArrayList<>(postViewModel.getComments());
             comments.add(comment);
             postViewModel.setComments(comments);
-
-            return template.save(postViewModel);
+            return template.findAndReplace(Query.query(Criteria.where("aggregateId").is(comment.getPostId())),postViewModel);
         });
     }
 

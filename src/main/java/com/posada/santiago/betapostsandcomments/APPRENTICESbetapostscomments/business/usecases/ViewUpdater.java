@@ -31,7 +31,6 @@ public class ViewUpdater extends DomainUpdater {
                     event.getTitle(),
                     "false",
                     new ArrayList<>());
-
             this.bus.publishPostViewModel(post);
             this.repository.saveNewPost(post).subscribe();
         });
