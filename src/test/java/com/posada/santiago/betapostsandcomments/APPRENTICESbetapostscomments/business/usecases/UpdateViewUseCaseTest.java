@@ -48,13 +48,13 @@ class UpdateViewUseCaseTest {
         var postCreatedEvent = new PostCreated("Author1","Title1");
         postCreatedEvent.setAggregateRootId("31416");
 
-        BDDMockito.when(repository.saveNewPost(Mockito.any(PostViewModel.class))).thenReturn(Mono.just(post));
+        Mockito.when(repository.saveNewPost(Mockito.any(PostViewModel.class))).thenReturn(Mono.just(post));
 
         usecaseToUse.accept(postCreatedEvent);
 
-        BDDMockito.verify(bus, BDDMockito.times(1)).publishPostViewModel(Mockito.any(PostViewModel.class));
+        Mockito.verify(bus, BDDMockito.times(1)).publishPostViewModel(Mockito.any(PostViewModel.class));
 
-        BDDMockito.verify(repository, BDDMockito.times(1)).saveNewPost(Mockito.any(PostViewModel.class));
+        Mockito.verify(repository, BDDMockito.times(1)).saveNewPost(Mockito.any(PostViewModel.class));
 
 
         //Act
@@ -75,13 +75,13 @@ class UpdateViewUseCaseTest {
         comments.add(comment);
         post.setComments(comments);
 
-        BDDMockito.when(repository.addCommentToPost(Mockito.any(CommentViewModel.class))).thenReturn(Mono.just(post));
+        Mockito.when(repository.addCommentToPost(Mockito.any(CommentViewModel.class))).thenReturn(Mono.just(post));
 
         usecaseToUse.accept(commentAddedEvent);
 
-        BDDMockito.verify(bus, BDDMockito.times(1)).publishCommentViewModel(Mockito.any(CommentViewModel.class));
+        Mockito.verify(bus, BDDMockito.times(1)).publishCommentViewModel(Mockito.any(CommentViewModel.class));
 
-        BDDMockito.verify(repository, BDDMockito.times(1)).addCommentToPost(Mockito.any(CommentViewModel.class));
+        Mockito.verify(repository, BDDMockito.times(1)).addCommentToPost(Mockito.any(CommentViewModel.class));
 
     }
 }
