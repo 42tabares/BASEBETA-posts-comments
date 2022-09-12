@@ -2,6 +2,7 @@ package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.bu
 
 
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.adapters.repository.MongoViewRepository;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.DomainViewRepository;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -10,9 +11,9 @@ import java.util.function.Supplier;
 
 @Service
 public class BringAllPostsUseCase implements Supplier<Flux<PostViewModel>> {
-    public final MongoViewRepository repository;
+    public final DomainViewRepository repository;
 
-    public BringAllPostsUseCase(MongoViewRepository repository) {
+    public BringAllPostsUseCase(DomainViewRepository repository) {
         this.repository = repository;
     }
 

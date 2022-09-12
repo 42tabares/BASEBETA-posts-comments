@@ -27,8 +27,6 @@ public class RabbitMqEventBus implements EventBus {
                 event.getClass().getTypeName(),
                 gson.toJson(event)
         );
-        //Find a way to send this notification through the predefined queues in the rabbitMq configuration,
-        //To that specific exchange and queues bases on the type of event
     }
 
     @Override

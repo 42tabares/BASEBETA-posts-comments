@@ -3,6 +3,7 @@ package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.bu
 
 
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.adapters.repository.MongoViewRepository;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.DomainViewRepository;
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.gateways.model.PostViewModel;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -12,9 +13,9 @@ import java.util.function.Function;
 @Service
 public class BringPostById implements Function<String,Mono<PostViewModel>>{
 
-    public final MongoViewRepository repository;
+    public final DomainViewRepository repository;
 
-    public BringPostById(MongoViewRepository repository) {
+    public BringPostById(DomainViewRepository repository) {
         this.repository = repository;
     }
 
