@@ -2,6 +2,7 @@ package com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.ap
 
 
 import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.application.handlers.QueueHandler;
+import com.posada.santiago.betapostsandcomments.APPRENTICESbetapostscomments.business.usecases.BringAllPostsUseCase;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -10,6 +11,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.logging.Logger;
 
 @Configuration
 public class RabbitMqConfig {

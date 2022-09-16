@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 @Service
 public class BringAllPostsUseCase implements Supplier<Flux<PostViewModel>> {
